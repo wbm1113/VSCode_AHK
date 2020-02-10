@@ -1,0 +1,26 @@
+{
+  "name": "ahkward",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "publisher": "ward",
+  "contributes": {
+    "languages": [
+      {
+        "id": "ahk",
+        "extensions": [
+          ".ahk"
+        ],
+        "configuration": "./config.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ahk",
+        "scopeName": "source.ahk",
+        "path": "./syntaxes/ahk.json"
+      }
+    ]
+  }
+}

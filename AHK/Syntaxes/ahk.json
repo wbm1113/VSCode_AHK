@@ -1,0 +1,125 @@
+{
+  "scopeName": "source.ahk",
+  "patterns": [{ "include": "#expression" }],
+  "repository": {
+    "expression": {
+      "patterns": [
+        { "include": "#AHKTrue" },
+        { "include": "#AHKFalse" },
+
+        { "include": "#AHKFlowLogical" },
+        { "include": "#AHKFlowInterrupt" },        
+
+        { "include": "#AHKKeywords" },
+        { "include": "#AHKKeywordsTwo" },
+        { "include": "#AHKDirectives" },
+        { "include": "#AHKBuiltInVar" },
+        { "include": "#AHKClassProperty" },
+        { "include": "#AHKClassItem" },
+        { "include": "#AHKFunctionObjectCall" },
+
+        { "include": "#AHKFunction" },
+        { "include": "#AHKCommand" },
+        { "include": "#AHKSubroutine" },
+
+        { "include": "#AHKEscape" },
+        { "include": "#AHKString" },
+        { "include": "#AHKNumber" },
+        { "include": "#AHKPunctuation" },
+        
+        { "include": "#AHKComment" },
+        { "include": "#AHKCustom" }
+      ]
+    },
+    "AHKTrue": {
+      "match": "(?i)(=(1|true)|!=\\\"\\\"|!=0)(?=\\s|\\))",
+      "name": "AHKTrue"
+    },
+    "AHKFalse": {
+      "match": "(?i)=(0|false|=\\\"\\\")(?=\\s|\\)|,)",
+      "name": "AHKFalse"
+    },
+
+    "AHKFlowLogical": {
+      "match": "(?i)\\b(IfMsgBox|if|else|for|in|loop|and|or|while|continue|try|catch)\\b",
+      "name": "AHKFlowLogical"
+    },
+    "AHKFlowInterrupt": {
+      "match": "(?i)\\b(return|break|exit|exitapp)\\b",
+      "name": "AHKFlowInterrupt"
+    },   
+
+    "AHKKeywords": {
+      "match": "(?i)\\b(Gui|Class|New|Extends|on|off|DetectHiddenText|Hide|TabLeft|Menu|Show|Button|Default|Hidden|Global|Static|NoEnv|SingleInstance|KeyHistory|SetWorkingDir|SetTitleMatchMode|DetectHiddenWindows|SetBatchLines|Process|SetKeyDelay|SetMouseDelay|SetDefaultMouseSpeed|SetWinDelay|SetControlDelay|ListLines|CoordMode|SendMode)(?!\\()\\b",
+      "name": "AHKKeywords"
+    },
+    "AHKKeywordsTwo": {
+      "match": "(?i)\\b(Clipboard|Relative|Mouse|Screen|Pixel|Add|xs|ys|ahk_id|ahk_parent|border|margin|text|edit|picture|pic|font|disable|disabled|center|enable|enabled|wrap|Section|ReadOnly)(?!\\()\\b",
+      "name": "AHKKeywordsTwo"
+    },
+    "AHKDirectives": {
+      "match": "(?i)#[\\w]++\\b",
+      "name": "AHKDirectives"
+    },
+    "AHKBuiltInVar": {
+      "match": "(?i)\\b(a_[A-z]++)\\b",
+      "name": "AHKBuiltInVar"
+    },
+    "AHKClassProperty": {
+      "match": "(?i)(?<=\\.)[a-z]++\\b(?!\\.|\\(|\\[)",
+      "name": "AHKClassProperty"
+    },
+    "AHKClassItem": {
+      "match": "(?i)((?<=class |new |extends )\\b[A-z0-9]++\\b|__new|(?<=\\.)(\\w+)(?=\\[))|(?<=\\]\\.)(\\w++)(?!\\()|\\b(\\w+)(?=\\[)|(?<=\\.)[A-z]++(?=\\.)",
+      "name": "AHKClassItem"
+    },
+    "AHKFunctionObjectCall": {
+      "match": "\\b__[A-z0-9]+\\b(?=\\.)",
+      "name": "AHKFunctionObjectCall"
+    },
+    
+    "AHKFunction": {
+      "match": "\\w+(?=\\()(?=\\()",
+      "name": "AHKFunction"
+    },
+    "AHKCommand": {
+      "match": "(?i)\\b(WinMinimize|ControlFocus|WinMove|WinSet|SendMessage|PostMessage|FileCopy|FileAppend|FileDelete|WinGet|MouseGetPos|FileSelectFile|IniRead|IniWrite|WinGetActiveTitle|WinGetPos|Sleep|ToolTip|SysGet|MsgBox|PixelGetColor|GuiControl|GoSub|ImageSearch|SetTimer|ControlGetText|ControlSetText|ControlSend|WinActivate|WinWaitActive|SendInput)\\b",
+      "name": "AHKCommand"
+    },
+    "AHKSubroutine": {
+      "match": "[\\w]++(:|::)$",
+      "name": "AHKSubroutine"
+    },
+
+    "AHKEscape": {
+      "match": "`[A-z]",
+      "name": "AHKEscape"
+    },
+    "AHKString": {
+      "match": "\\\"([^\\\"]+)?\\\"",
+      "name": "AHKString"
+    },
+    "AHKNumber": {
+      "match": "(?<![A-z])[0-9]++(?![A-z])",
+      "name": "AHKNumber"
+    },
+    "AHKPunctuation": {
+      "match": "(\\.|\\[|\\]|\\{|\\}|\\(|\\)|\\:|\\+|\\-|\\*|\\=|<|>|\\%|,)",
+      "name": "AHKPunctuation"
+    },
+
+    "AHKComment": {
+      "match": "(?!\\n|\\s);[^\\n]*\\n",
+      "name": "AHKComment"
+    },
+    "AHKCustom": {
+      "match": "(?<=\\s)(Hwnd|g|v)([A-Z])([A-z0-9]++)",
+      "name": "AHKCustom"
+    },
+
+    "AHKVariables": {
+      "match": "(i?)((?<=\\s)([A-z0-9.])++(?= :=|:=)|%[\\w]++%)",
+      "name": "AHKVariables"
+    }
+  }
+}
