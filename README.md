@@ -4,7 +4,7 @@ Syntax highlighting for AHK
 # Installation
 Download the extension and add it to your local extension directory.
 
-Add the following to your user settings: 
+Add the following to your user settings:
 
 ```"editor.tokenColorCustomizations": {
         "textMateRules": [
